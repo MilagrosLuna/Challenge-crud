@@ -85,7 +85,14 @@ router.post("/", async (req, res) => {
       areaId,
     } = req.body;
 
-    if (!nombreCompleto || !dni || !fechaNacimiento || areaId == null) {
+    if (
+      !nombreCompleto ||
+      !dni ||
+      !fechaNacimiento ||
+      esDesarrollador === undefined ||
+      !descripcion ||
+      !areaId
+    ) {
       return res.status(400).json({ error: "Faltan campos obligatorios" });
     }
 
@@ -106,7 +113,11 @@ router.post("/", async (req, res) => {
     });
 
     res.status(201).json(nuevoEmpleado);
-  } catch (e) {
+  } catch (e: any) {
+    if (e.code === "P2002" && e.meta?.target?.includes("dni")) {
+      return res.status(400).json({ error: "El DNI ya está registrado" });
+    }
+    console.error("Error al crear empleado:", e);
     res.status(500).json({ error: "Error al crear empleado" });
   }
 });

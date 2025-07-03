@@ -31,16 +31,17 @@ npm install
 ```bash
 cd back
 npm install
+npx prisma generate
 ```
 
 
 ### **3️⃣ Configurar variables de entorno**
 #### Frontend
 
-Crear `.env.local` en `front/` con:
+Crear `.env` en `front/` con:
 
 ```env
-NEXT_PUBLIC_API_URL=http://localhost:4000/api
+NEXT_PUBLIC_API_URL=http://localhost:4000
 ```
 
 #### Backend

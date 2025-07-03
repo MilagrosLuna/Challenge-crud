@@ -23,6 +23,10 @@ const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
 app.use(cors());
 
+app.get("/", (req, res) => {
+  res.json({ message: "API funcionando correctamente" });
+});
+
 app.use("/api", express.json());
 
 app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));

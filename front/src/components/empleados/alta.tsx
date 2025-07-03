@@ -30,10 +30,12 @@ export default function CrearEmpleadoForm({ onSuccess }: Props) {
   const [mensaje, setMensaje] = useState("");
 
   const onSubmit = async (data: FormData) => {
+    const payload = { ...data, areaId: Number(data.areaId) };
+
     const res = await fetch(`${API_URL}/api/empleados`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify(payload),
     });
 
     if (res.ok) {
@@ -41,7 +43,8 @@ export default function CrearEmpleadoForm({ onSuccess }: Props) {
       reset();
       onSuccess();
     } else {
-      setMensaje("Error al registrar empleado");
+      const errorData = await res.json();
+      setMensaje(errorData.error || "Error al registrar empleado");
     }
   };
 
