@@ -12,8 +12,8 @@ Este proyecto es una aplicación **CRUD de Gestión de Empleados** desarrollada 
 ### **1️⃣ Clonar el repositorio**
 
 ```sh
- git clone https://github.com/MilagrosLuna/
- cd 
+ git clone https://github.com/MilagrosLuna/Challenge-crud
+ cd Challenge-crud
 ```
 
 ### **2️⃣ Instalar dependencias**
