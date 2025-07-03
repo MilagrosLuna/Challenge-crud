@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Area {
+  id        Int        @id @default(autoincrement())
+  nombre    String
+  isDeleted Boolean    @default(false)
+  empleados Empleado[]
+}
+
+model Empleado {
+  id              Int      @id @default(autoincrement())
+  nombreCompleto  String
+  dni             String   @unique
+  fechaNacimiento DateTime
+  esDesarrollador Boolean
+  descripcion     String
+  areaId          Int
+  isDeleted       Boolean  @default(false)
+  area            Area     @relation(fields: [areaId], references: [id])
+}
