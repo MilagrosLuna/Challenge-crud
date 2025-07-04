@@ -134,6 +134,27 @@ Accedé a `http://localhost:4000/docs` para ver la interfaz interactiva.
 
 ---
 
+## Testeo automático
+
+Solo se implementaron tests automáticos para el backend (API REST con Node.js y Express).
+
+### Como ejecutar los tests del backend
+
+1. Desde la carpeta `back`, instala las dependencias si no lo hiciste:
+   ```bash
+   npm install
+   npx prisma generate
+   ```
+
+2. Ejecuta los tests:
+   ```bash
+   npm test
+   ```
+
+Esto correrá los tests unitarios y de integración sobre los endpoints de empleados y áreas.
+
+---
+
 ## 📌 Estimación de tareas
 
 | Tarea                                   | Tiempo estimado |
@@ -143,6 +164,7 @@ Accedé a `http://localhost:4000/docs` para ver la interfaz interactiva.
 | Implementación de rutas REST (API)      | 2 h             |
 | Desarrollo frontend (Next.js)           | 2 h             |
 | Documentación (Swagger/README)          | 1 h             |
+| Testeo                                  | 1 h             |
 
 
 
